@@ -8,6 +8,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { DisplayProductComponent } from './display-product/display-product.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'',component:ListProductsComponent},
   {path:'profile/:id',component:ProfileComponent},
   {path:'product/:id',component:ProductEditComponent,canActivate:[AuthGuardService]},
+  {path:'getProduct/:id',component:DisplayProductComponent},
   {path:'checkout',component:CartComponent},
 ];
 

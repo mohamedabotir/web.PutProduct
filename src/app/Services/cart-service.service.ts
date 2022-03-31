@@ -36,6 +36,7 @@ localStorage.setItem("products",JSON.stringify(this.data));
    let isFound = false
    if(product.quantity<1){
     this.toast.error("OutOfStock");
+    return;
    }
     if(localStorage.getItem("products")){
       this.data = JSON.parse(localStorage.getItem("products")!);

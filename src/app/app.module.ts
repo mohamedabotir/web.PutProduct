@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ProfileComponent } from './profile/profile.component';
 import { CartService } from './Services/cart-service.service';
 import { CartComponent } from './cart/cart.component';
+import { DisplayProductComponent } from './display-product/display-product.component';
 @NgModule({
    declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { CartComponent } from './cart/cart.component';
     ProductEditComponent,
     ProfileComponent,
     CartComponent,
+    DisplayProductComponent,
 
   ],
   imports: [

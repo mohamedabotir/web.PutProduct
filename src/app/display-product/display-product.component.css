@@ -1,0 +1,38 @@
+img {
+  width: 30em;
+  height: 30em;
+  float: left;
+  padding: 10;
+}
+.desc {
+  padding-top: 8em;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+.quantity {
+  background-color: darkslategray;
+  border-radius: 25%;
+  width: 10em;
+  color: antiquewhite;
+  text-align: center;
+}
+
+.price {
+  margin-left: 0.7em;
+  display: inline;
+  background-color: darkgoldenrod;
+  border-radius: 25%;
+  width: 10em;
+  color: antiquewhite;
+  text-align: center;
+}
+.owner {
+  margin-left: 0.7em;
+  display: inline;
+  background-color: chocolate;
+  border-radius: 25%;
+  width: 10em;
+  color: antiquewhite;
+  text-align: center;
+}

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-6">
+      <img [src]="ProductData.imageUrl" alt="" class="center">
+
+    </div>
+    <div class="col-lg-6">
+      <p class="desc">{{ProductData.description}}</p>
+      <div class="details">
+
+        <span class="quantity">{{ProductData.quantity}} {{(ProductData.quantity>1?"Units":"Unit")}}</span>
+        <span class="price">{{ProductData.price}} L.E</span>
+        <span class="owner">Seller:{{ProductData.userName}}</span>
+        <div class="cart-add">
+          <a class="btn btn-primary" (click)="addToCart(ProductData)">Add To Cart </a>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
