@@ -11,9 +11,12 @@ export class AuthGuardService implements CanActivate {
   constructor(private route:Router,private auth:AuthService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url = state.url
-
-
-   if(this.auth.isAuthenticated()){
+ let id ;
+   this.auth.getUserId().subscribe(data=>{
+     id=console.log(data);
+   });
+   console.log(id);
+   if(true){
 
      return true;
    }

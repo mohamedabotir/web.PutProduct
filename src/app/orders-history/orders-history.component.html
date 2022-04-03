@@ -1,0 +1,20 @@
+
+<div class="orders" *ngFor="let item of orders ; let i=index">
+  <div class="row">
+
+    <div class="container col-md-6">
+
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Order {{i}} {{item.orderTime}}
+      </a>
+      <div class="collapse" id="collapseExample{{i}}">
+        <div class="card card-body">
+
+          <div *ngFor="let it of item.orderProducts">
+            {{it.name}} {{i}}
+          </div>
+         </div>
+      </div>
+    </div>
+</div>
+</div>

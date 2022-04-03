@@ -1,6 +1,7 @@
 import { Product } from 'src/Shared/Products';
 export interface Order{
-products:Product[],
+orderProducts:Product[],
 totalPrice:Number,
-discountCode?:string
+discountCode?:string,
+orderTime:Date
 }

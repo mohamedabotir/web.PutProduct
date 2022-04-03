@@ -43,4 +43,7 @@ export class AuthService {
   updateProfile(profile:Profile){
    return this.auth.post<Profile>(this.profile+"updateProfile",profile);
   }
+  Logout(){
+    localStorage.setItem("token","");
+  }
 }

@@ -1,3 +1,5 @@
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
+import { LogoutComponent } from './logout/logout.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuardService } from './Services/auth-guard.service';
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path:'product/:id',component:ProductEditComponent,canActivate:[AuthGuardService]},
   {path:'getProduct/:id',component:DisplayProductComponent},
   {path:'checkout',component:CartComponent},
+  {path:'logout',component:LogoutComponent},
+  {path:'OrderHistory',component:OrdersHistoryComponent}
 ];
 
 @NgModule({

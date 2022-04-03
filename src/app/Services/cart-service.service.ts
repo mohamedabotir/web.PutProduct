@@ -13,7 +13,7 @@ export class  CartService {
   Orders: Order;
   apiurl = environment.url
   constructor(private toast:ToastrService,private http:HttpClient) {
-    this.Orders={products:[],totalPrice:0,discountCode:""};
+    this.Orders={orderProducts:[],totalPrice:0,discountCode:"",orderTime:new Date()};
   }
 cart:Observable<Product[]>=new Observable<Product[]>();
 returnProducts(){
@@ -71,7 +71,7 @@ localStorage.setItem("products",JSON.stringify(this.data));
   });
   console.log(TotalPrice,"  ",products);
   this.Orders.discountCode = discountCode;
-  this.Orders.products = products;
+  this.Orders.orderProducts = products;
   this.Orders.totalPrice=TotalPrice;
   console.log(JSON.stringify(this.Orders));
   return this.http.post<Order>(this.apiurl+"product/cart",this.Orders);

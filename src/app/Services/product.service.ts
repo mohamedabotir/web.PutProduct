@@ -1,3 +1,4 @@
+import { Order } from 'src/Shared/Order';
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,5 +29,9 @@ deleteProduct(id:Number):Observable<Product>{
 }
 updateProduct(product:Product):Observable<Product>{
   return this.push.put<Product>(this.apiPath+"product/Update",product);
+}
+
+getOrderHistory():Observable<Array<Order>>{
+  return this.push.get<Array<Order>>(this.apiPath+"product/OrderHistory");
 }
 }

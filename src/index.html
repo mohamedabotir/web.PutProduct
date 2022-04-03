@@ -41,7 +41,10 @@
             <a  class="dropdown-item" href="/profile/userId" id="profile"><li>Profile</li></a>
             <a  class="dropdown-item" href="/login" id="login"><li>Login</li></a>
             <a class="dropdown-item" href="/register" id="register"><li id="register1">Register</li></a>
-             </ul>
+            <a class="dropdown-item" href="/postProduct" id="postProduct"><li id="postProduct">Sell Product</li></a>
+            <a class="dropdown-item" href="/logout" id="Logout"><li id="Logout">Log out</li></a>
+
+          </ul>
           </li>
 
         </ul>
@@ -72,6 +75,8 @@
      },
      error:function(error){
       document.getElementById("profile").remove();
+      document.getElementById("postProduct").remove();
+      document.getElementById("Logout").remove();
      }
 
    })

@@ -21,6 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { CartService } from './Services/cart-service.service';
 import { CartComponent } from './cart/cart.component';
 import { DisplayProductComponent } from './display-product/display-product.component';
+import { LogoutComponent } from './logout/logout.component';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 @NgModule({
    declarations: [
     AppComponent,
@@ -32,6 +34,8 @@ import { DisplayProductComponent } from './display-product/display-product.compo
     ProfileComponent,
     CartComponent,
     DisplayProductComponent,
+    LogoutComponent,
+    OrdersHistoryComponent,
 
   ],
   imports: [
