@@ -83,7 +83,7 @@
    var length=0;
    setInterval(()=>{
    length = JSON.parse(localStorage.getItem("products")).length;
-   document.getElementById("cart").innerText=length;
+   document.getElementById("cart").innerText=length==null?0:length;
    },500);
   });
   </script>

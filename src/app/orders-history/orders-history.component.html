@@ -1,20 +1,26 @@
+<div class="container">
+<h5>Total Paid {{totalPaid}}</h5>
+  <div class="orders" *ngFor="let item of orders ; let i=index">
+    <div class="row">
 
-<div class="orders" *ngFor="let item of orders ; let i=index">
-  <div class="row">
+      <div class="container col-md-6">
 
-    <div class="container col-md-6">
-
-      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
         Order {{i}} {{item.orderTime}}
       </a>
       <div class="collapse" id="collapseExample{{i}}">
         <div class="card card-body">
 
           <div *ngFor="let it of item.orderProducts">
-            {{it.name}} {{i}}
+            <app-order-product [data]=it [totalPrice]=item.totalPrice>
+            </app-order-product>
           </div>
-         </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>
 </div>
+
+
+

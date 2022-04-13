@@ -10,13 +10,19 @@ import { ProductService } from '../Services/product.service';
 export class OrdersHistoryComponent implements OnInit {
 
 orders!:Array<Order>
+totalPaid!:number
 
   constructor(private products:ProductService) { }
 
   ngOnInit(): void {
+    this.totalPaid = 0;
     this.products.getOrderHistory().subscribe(data=>{
       this.orders = data;
-      console.log(this.orders[0].orderProducts);
+      this.orders.forEach(data=>{
+        this.totalPaid +=Number(data.totalPrice)
+      });
+      console.log(this.orders);
+      console.log(this.totalPaid);
     });
   }
 
