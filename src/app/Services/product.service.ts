@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Product } from 'src/Shared/Products';
+import { Comments } from './../../Shared/Comments';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,12 @@ updateProduct(product:Product):Observable<Product>{
 
 getOrderHistory():Observable<Array<Order>>{
   return this.push.get<Array<Order>>(this.apiPath+"product/OrderHistory");
+}
+
+pushComment(Comment:Comments):Observable<Comments>{
+  return this.push.post<Comments>(this.apiPath+"Product/Comment",Comment);
+}
+getComments(id:Number):Observable<Comments[]>{
+  return this.push.get<Comments[]>(this.apiPath+"Product/GetComments?id="+id);
 }
 }

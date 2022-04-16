@@ -1,0 +1,6 @@
+   <ng-content>
+
+   </ng-content>
+
+  <input placeholder="Comment" class="comment form-control" #CommentRef minlength="1" maxlength="150">
+  <button (click)="onSubmit(CommentRef.value)" class="btn btn-success comment-btn">Comment</button>

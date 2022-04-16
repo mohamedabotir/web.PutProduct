@@ -24,6 +24,7 @@ import { DisplayProductComponent } from './display-product/display-product.compo
 import { LogoutComponent } from './logout/logout.component';
 import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 import { OrderProductComponent } from './order-product/order-product.component';
+import { CommentComponent } from './comment/comment.component';
 @NgModule({
    declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { OrderProductComponent } from './order-product/order-product.component';
     LogoutComponent,
     OrdersHistoryComponent,
     OrderProductComponent,
+    CommentComponent,
 
   ],
   imports: [

@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'getProduct/:id',component:DisplayProductComponent},
   {path:'checkout',component:CartComponent},
   {path:'logout',component:LogoutComponent},
-  {path:'OrderHistory',component:OrdersHistoryComponent}
+  {path:'OrderHistory',component:OrdersHistoryComponent,canActivate:[AuthGuardService]}
 ];
 
 @NgModule({
