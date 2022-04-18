@@ -13,7 +13,6 @@ import { CartService } from '../Services/cart-service.service';
 export class DisplayProductComponent implements OnInit  {
 productId!:Number;
 ProductData!:Product;
-CommentsData!:Comments[];
   constructor(private Product:ProductService,private route:ActivatedRoute,private cartService:CartService) {
      this.ProductData = {id:0,description:"",quantity:0,name:"",price:0,categoryId:0,imageUrl:"",userName:"",qty:0,userId:""};
   }
@@ -22,19 +21,12 @@ CommentsData!:Comments[];
   ngOnInit(): void {
     this.route.params.subscribe(data=>{
       this.productId = data["id"];
-       this.getComments();
       this.getProduct();
     });
 
 
   }
-getComments(){
-  console.log(this.productId,"asddas");
-  this.Product.getComments(this.productId).subscribe(data=>{
-      this.CommentsData = data;
-      console.log(this.CommentsData);
-    });
-}
+
   getProduct(){
     this.Product.getProduct(this.productId).subscribe(data=>{
        this.ProductData = data;

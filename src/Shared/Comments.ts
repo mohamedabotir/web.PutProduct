@@ -1,5 +1,6 @@
 export interface Comments{
-  Message:String,
+  message:String,
   ProductId:Number,
-  Name?:String
+  name?:String,
+  commentDateTime:Date
 }

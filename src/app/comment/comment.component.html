@@ -1,6 +1,19 @@
    <ng-content>
 
-   </ng-content>
+  </ng-content>
+  <div class="recent-comments" *ngFor="let comment of CommentDatas">
+    <span class="option">
+      <a href="#">Edit</a>
+
+      <a href="#">delete</a>
+    </span>
+   <h4>{{comment.name}}</h4>
+   <span class="date-seller">
+     <p>at {{comment.commentDateTime}}</p>
+   </span>
+   <h6 class="content">{{comment.message}}</h6>
+   <hr>
+  </div>
 
   <input placeholder="Comment" class="comment form-control" #CommentRef minlength="1" maxlength="150">
   <button (click)="onSubmit(CommentRef.value)" class="btn btn-success comment-btn">Comment</button>

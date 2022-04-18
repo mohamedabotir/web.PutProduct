@@ -11,17 +11,20 @@ import { Comments } from 'src/Shared/Comments';
 export class CommentComponent implements OnInit ,AfterContentInit{
 @Input() ProductId!:Number;
 comment!:Comments;
-@Input()CommentDatas!:Comments[];
+CommentDatas!:Comments[];
   constructor(private Product:ProductService) { }
   ngAfterContentInit(): void {
-    console.log(this.CommentDatas)
+
   }
 
   ngOnInit(): void {
-
+    this.Product.getComments(this.ProductId).subscribe(data=>{
+      this.CommentDatas = data;
+      console.log(this.CommentDatas);
+    });
   }
  onSubmit(message:String){
- this.comment = {Message:message,ProductId:this.ProductId}
+ this.comment = {message:message,ProductId:this.ProductId,commentDateTime:new Date()}
  this.Product.pushComment(this.comment).subscribe(data=>{
    this.CommentDatas.push(this.comment);
    console.log(data);

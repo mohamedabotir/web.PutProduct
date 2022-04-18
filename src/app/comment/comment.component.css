@@ -5,3 +5,21 @@
 .comment-btn{
  margin-top: 0.3em;
 }
+
+.recent-comments >hr{
+  width: 30em;
+}
+.option{
+  display: none;
+
+}
+
+.recent-comments:hover .option{
+  display: inline-block;
+  position: absolute;
+  left: 12em;
+}
+.option >a{
+
+  margin-left: 1em;
+}

@@ -4,13 +4,14 @@
   position: relative;
 }
 .cart-length {
+  z-index: -0.4;
   background-color: #418deb;
   color: #fff;
   border-radius: 30%;
   position: relative;
   bottom: 1em;
   right: 1em;
-  width: 10px;
+  width: 30px;
   height: 30px;
   font-size: 1rem;
 }

@@ -16,7 +16,8 @@ export class ErrorInterceptorService implements HttpInterceptor {
       if(evt.status==200 && evt.body["message"]){
           this.toast.success(evt.body["message"]);
       }
-   }}),
+   }
+  }),
     catchError((err)=>{
 
 
