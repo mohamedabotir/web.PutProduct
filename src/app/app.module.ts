@@ -1,7 +1,7 @@
 import { ErrorInterceptorService } from './Services/error-interceptor.service';
 import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -49,7 +49,8 @@ import { CommentComponent } from './comment/comment.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [CartService,AuthService,ProductService,{
     provide:HTTP_INTERCEPTORS,

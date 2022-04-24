@@ -1,19 +1,42 @@
    <ng-content>
 
   </ng-content>
-  <div class="recent-comments" *ngFor="let comment of CommentDatas">
+  <div class="recent-comments" *ngFor="let comments of CommentDatas">
     <span class="option">
-      <a href="#">Edit</a>
+      <a  (click)=onEdit(comments) data-bs-target="#exampleModal" data-bs-toggle="modal">Edit</a>
 
-      <a href="#">delete</a>
+      <a (click)=ondelete(comments)>delete</a>
     </span>
-   <h4>{{comment.name}}</h4>
+   <h4>{{comments.name}}</h4>
    <span class="date-seller">
-     <p>at {{comment.commentDateTime}}</p>
+     <p>at {{comments.commentDateTime}}</p>
    </span>
-   <h6 class="content">{{comment.message}}</h6>
+   <h6 class="content">{{comments.message}}</h6>
    <hr>
   </div>
 
   <input placeholder="Comment" class="comment form-control" #CommentRef minlength="1" maxlength="150">
   <button (click)="onSubmit(CommentRef.value)" class="btn btn-success comment-btn">Comment</button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" >Edit Comment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Message:</label>
+              <input type="text" class="form-control" id="recipient-name" [(ngModel)]="message" name="message">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="Update()">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -42,4 +42,12 @@ pushComment(Comment:Comments):Observable<Comments>{
 getComments(id:Number):Observable<Comments[]>{
   return this.push.get<Comments[]>(this.apiPath+"Product/GetComments?id="+id);
 }
+
+updateComment(comment:Comments){
+return this.push.put<string>(this.apiPath+"Product/UpdateComment",comment);
+}
+
+deleteComment(id:Number){
+  return this.push.delete<string>(this.apiPath+"Product/DeleteComment?id="+id);
+  }
 }

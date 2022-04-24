@@ -1,6 +1,6 @@
 export interface Comments{
   message:String,
-  ProductId:Number,
+  productId:Number,
   name?:String,
   commentDateTime:Date
 }
