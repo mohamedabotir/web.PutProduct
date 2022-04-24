@@ -26,7 +26,7 @@ message!:string;
     });
   }
  onSubmit(message:String){
- this.comment = {message:message,productId:this.ProductId,commentDateTime:new Date()}
+ this.comment = {message:message,productId:this.ProductId,commentDateTime:new Date(),id:0}
  this.Product.pushComment(this.comment).subscribe(data=>{
    this.CommentDatas.push(data);
    console.log(data);
@@ -49,7 +49,7 @@ console.log(comment);
    var index=this.CommentDatas.indexOf(comment)
    console.log(index);
    console.log(comment);
-   this.Product.deleteComment(comment.productId).subscribe(data=>{
+   this.Product.deleteComment(comment.id).subscribe(data=>{
      this.CommentDatas.splice(index,1)
    });
 

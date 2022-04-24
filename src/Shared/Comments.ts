@@ -3,4 +3,5 @@ export interface Comments{
   productId:Number,
   name?:String,
   commentDateTime:Date
+  id:Number
 }
