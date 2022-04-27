@@ -1,8 +1,9 @@
 import { ToastrService } from 'ngx-toastr';
-
+import {render } from 'creditcardpayments/creditCardPayments'
 import { CartService } from './../Services/cart-service.service';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Product } from 'src/Shared/Products';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -11,8 +12,14 @@ import { Product } from 'src/Shared/Products';
 })
 export class CartComponent implements OnInit,OnChanges {
   @Input() qty!:Number;
+  @ViewChild('payment') span!:ElementRef;
+  @ViewChild('payment1') span2!:ElementRef;
+  TotalPrice!:number;
+  price:BehaviorSubject<number>=new BehaviorSubject<number>(0);
+  constructor(private cartService:CartService,private toast:ToastrService) {
 
-  constructor(private cartService:CartService,private toast:ToastrService) { }
+
+  }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.products,changes+"saddsadsadsadasd");
   }
@@ -20,7 +27,9 @@ export class CartComponent implements OnInit,OnChanges {
 
   ngOnInit(): void {
    this.products = this.cartService.returnProducts();
-     console.log(this.cartService.data);
+     console.log(this.products);
+    this.CalculateTotalPrice();
+    this.getRender();
   }
   deleteItem(item:Product){
     this.cartService.Delete(item);
@@ -33,6 +42,7 @@ export class CartComponent implements OnInit,OnChanges {
     }
 
   }
+
   pay(){
   this.cartService.Pay(this.products,"fdsfsdfsd").subscribe(data=>{
     if(data){
@@ -46,16 +56,45 @@ export class CartComponent implements OnInit,OnChanges {
 increment(index:number){
   if(this.products[index].qty +1 >this.products[index].quantity)
   {this.toast.info(`maximum quantity from ${this.products[index].name.substring(0,28)} is ${this.products[index].quantity}`)}
-  else
+  else{
   this.products[index].qty += 1;
+this.CalculateTotalPrice();
+}
 }
 decrement(index:number){
   if(this.products[index].qty -1 ==0){
     return;
   }
-  else
+  else{
   this.products[index].qty -= 1;
+  this.CalculateTotalPrice();
+}
+}
+
+CalculateTotalPrice(){
+  this.TotalPrice = 0;
+  this.products.forEach(data=>{
+   this.TotalPrice+=Number(data.price) * data.qty;
+ });
+ console.log(this.TotalPrice);
+ console.log(this.span);
+
+
+
+}
+
+getRender(){
+    render({
+      id: '#mypaypalButtons',
+      value: this.TotalPrice.toString(),
+      currency: 'US',
+      onApprove:(state=>{
+       this.pay();
+        alert("payment Successfully");
+      })
+    });
+
+}
 }
 
 
-}
