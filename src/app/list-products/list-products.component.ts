@@ -1,9 +1,11 @@
+import { environment } from './../../environments/environment.prod';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from './../Services/cart-service.service';
 import { AuthService } from './../Services/auth.service';
 import { ProductService } from './../Services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/Shared/Products';
+import * as signalR from '@microsoft/signalr';
 
 @Component({
   selector: 'app-list-products',
@@ -18,10 +20,12 @@ public static data:Product[]=[];
   constructor(private cartService:CartService,private Product:ProductService,private auth:AuthService,private tos:ToastrService) { }
 
   ngOnInit(): void {
+
+    this.auth.getUserId().subscribe(data=>{
+    this.userId = data;
+    });
+
 this.getProducts();
-this.auth.getUserId().subscribe(data=>{
-this.userId = data;
-});
 
   }
   getProducts():void{

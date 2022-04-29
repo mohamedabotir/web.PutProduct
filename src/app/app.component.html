@@ -1,1 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">PutProduct</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item cart">
+          <a href="/checkout"><i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-length" id="cart"></span>
+          </a>
+        </li>
+        <li class="nav-item notification ">
+          <i class="fa-solid fa-bell"></i>
+          <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on bottom
+</button>
+
+        </li>
+      </ul>
+      <ul>
+        <li class="nav-item dropdown d-flex">
+
+          <a class="nav-link dropdown-toggle me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            UserAction
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a  class="dropdown-item" href="/profile/userId" id="profile"><li>Profile</li></a>
+          <a  class="dropdown-item" href="/login" id="login"><li>Login</li></a>
+          <a class="dropdown-item" href="/register" id="register"><li id="register1">Register</li></a>
+          <a class="dropdown-item" href="/postProduct" id="postProduct"><li id="postProduct">Sell Product</li></a>
+          <a class="dropdown-item" href="/logout" id="Logout"><li id="Logout">Log out</li></a>
+
+        </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>
