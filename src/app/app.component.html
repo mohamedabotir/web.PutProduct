@@ -18,11 +18,8 @@
           </a>
         </li>
         <li class="nav-item notification ">
-          <i class="fa-solid fa-bell"></i>
-          <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on bottom
-</button>
+          <i class="fa-solid fa-bell" [ngbPopover]="popContent" popoverTitle="Notifications"></i>
+
 
         </li>
       </ul>
@@ -47,5 +44,11 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
     </div>
   </div>
 </nav>
+
+<ng-template #popContent>
+  <ng-container *ngFor="let message of Notifications" ><div class="notification" #notification>{{message.message}}</div>
+  </ng-container>
+  <div class="notification" #notification *ngIf="ispushed">{{notificationMessage}}</div>
+</ng-template>
 
 <router-outlet></router-outlet>

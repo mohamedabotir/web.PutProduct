@@ -1,3 +1,4 @@
+import { NotificationService } from './Services/notification.service';
 import { ErrorInterceptorService } from './Services/error-interceptor.service';
 import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 import { OrderProductComponent } from './order-product/order-product.component';
 import { CommentComponent } from './comment/comment.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
    declarations: [
     AppComponent,
@@ -41,6 +44,7 @@ import { CommentComponent } from './comment/comment.component';
     OrderProductComponent,
     CommentComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -50,9 +54,11 @@ import { CommentComponent } from './comment/comment.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgbModule
+
   ],
-  providers: [CartService,AuthService,ProductService,{
+  providers: [CartService,AuthService,ProductService,NotificationService,{
     provide:HTTP_INTERCEPTORS,
     useClass:InterceptorService,
     multi:true
