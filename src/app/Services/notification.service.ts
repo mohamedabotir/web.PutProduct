@@ -12,4 +12,11 @@ export class NotificationService {
   getNotifications(){
    return this.client.get("http://localhost:20076/api/Notification/GetNotifications");
   }
+
+  getNotificationCount(){
+    return this.client.get("http://localhost:20076/api/Notification/GetNotificationsCount");
+  }
+  markNotificationAsRead(notifications:any){
+return this.client.post("http://localhost:20076/api/Notification/MarkNotificationAsReaded",notifications);
+  }
 }

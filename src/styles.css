@@ -19,3 +19,28 @@
 .cart a {
   text-decoration: none;
 }
+
+li.nav-item.notification {
+  position: absolute;
+  left: 16em;
+  top: 1.5em;
+}
+.popover-body{
+  overflow-y: auto;
+  height: 40em;
+  width: 19em;
+}
+.notification-length{
+    z-index: -0.4;
+    background-color: red;
+    color: #fff;
+    border-radius: 30%;
+    position: relative;
+    bottom: 1em;
+    right: 1em;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+
+
+}

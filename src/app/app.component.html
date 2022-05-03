@@ -17,9 +17,9 @@
           <span class="cart-length" id="cart"></span>
           </a>
         </li>
-        <li class="nav-item notification ">
-          <i class="fa-solid fa-bell" [ngbPopover]="popContent" popoverTitle="Notifications"></i>
-
+        <li class="nav-item notification "(click)="markRead()">
+          <i class="fa-solid fa-bell notification-bell" [ngbPopover]="popContent" popoverTitle="Notifications" ></i>
+          <span class="notification-length">{{notificationCount}}</span>
 
         </li>
       </ul>

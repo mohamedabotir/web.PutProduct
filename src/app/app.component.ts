@@ -12,6 +12,7 @@ userId?:any;
 notificationMessage!:any;
 Notifications!:any;
 ispushed = false;
+notificationCount!:any;
 
   constructor(private auth:AuthService,private notificationService:NotificationService) {
 
@@ -20,9 +21,14 @@ ispushed = false;
 
 
   ngOnInit(): void {
+    this.notificationService.getNotificationCount().subscribe(data=>{
+      this.notificationCount = data;
+      console.log(this.notificationCount)
+    });
 
     this.notificationService.getNotifications().subscribe((data)=>{
      this.Notifications = data;
+     console.log(this.Notifications);
     });
 
 
@@ -41,7 +47,7 @@ ispushed = false;
 
     connection.on("BroadcastNotification", (data) => {
       if(this.userId == data.receiverId){
-
+        this.notificationCount++;
         console.log(data);
         this.notificationMessage = data.message;
         this.Notifications.push(this.notificationMessage);
@@ -51,6 +57,10 @@ ispushed = false;
     });
   }
   title = 'web.PutProduct';
-
+markRead(){
+  this.notificationService.markNotificationAsRead(this.Notifications).subscribe(data=>{
+   this.notificationCount = 0;
+  });
+}
 
 }
