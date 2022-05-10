@@ -34,9 +34,13 @@ export class AuthService {
    {return true;}
    return false;
   }
-  getUserId(){
-   return  this.auth.get(this.apiUr+"GetUserId");
+    getUserId(){
+   return    this.auth.get(this.apiUr+"GetUserId");
   }
+
+  async getUserId1(){
+    return  await this.auth.get(this.apiUr+"GetUserId");
+   }
    getProfile(id:string):Observable<Profile>{
     return  this.auth.get<Profile>(this.profile + "index/" + id);
   }

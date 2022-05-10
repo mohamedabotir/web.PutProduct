@@ -21,22 +21,27 @@ website: [''],
 emailAddress: ['',Validators.required],
 location: [''],
 imageUrl: ['']
+
 });
+myId!:string
   constructor(private fb:FormBuilder,private Auth:AuthService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.getProfile();
   }
 
   getProfile(){
      this.route.params.pipe(map(param=>{
+       this.myId = localStorage.getItem("userId") as string;
        this.id = param["id"];
+       console.log(this.id,"   ",this.myId);
        return this.id;
      }),mergeMap(id=>this.Auth.getProfile(id))).subscribe(data=>{
        console.log(data);
       this.image = data.imageUrl;
       this.form = this.fb.group({
-      name: [data.name,Validators.required],
+      name: [data.name,[Validators.required]],
       bio: [data.bio],
       website: [data.website],
       emailAddress: [data.emailAddress,Validators.required],

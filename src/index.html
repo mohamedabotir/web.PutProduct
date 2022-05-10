@@ -30,6 +30,7 @@
      success:function(data){
        console.log(data)
        userId = data;
+       localStorage.setItem("userId",userId);
        document.getElementById("login").remove();
        document.getElementById("register").remove();
        document.getElementById("profile").href=`/profile/${userId}`;
