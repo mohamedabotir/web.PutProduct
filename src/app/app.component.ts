@@ -1,3 +1,4 @@
+import { NotificationData } from './../Shared/notifications';
 import { NotificationService } from './Services/notification.service';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
@@ -23,12 +24,11 @@ notificationCount!:any;
   ngOnInit(): void {
     this.notificationService.getNotificationCount().subscribe(data=>{
       this.notificationCount = data;
-      console.log(this.notificationCount)
+      console.log(this.notificationCount,"asdd")
     });
 
     this.notificationService.getNotifications().subscribe((data)=>{
-     this.Notifications = data;
-     console.log(this.Notifications);
+     this.Notifications= data;
     });
 
 
@@ -44,23 +44,25 @@ notificationCount!:any;
     }).catch(function (err) {
       return console.error(err.toString());
     });
-
     connection.on("BroadcastNotification", (data) => {
-      if(this.userId == data.receiverId){
+      if(this.userId == data.receiverId && this.userId !=data.senderId){
         this.notificationCount++;
-        console.log(data);
-        this.notificationMessage = data.message;
-        this.Notifications.push(this.notificationMessage);
-        this.ispushed = true;
+        console.log(data,"11111");
+        this.notificationMessage = data;
+        this.Notifications.push(data);
 
       }
     });
   }
   title = 'web.PutProduct';
 markRead(){
+
+
   this.notificationService.markNotificationAsRead(this.Notifications).subscribe(data=>{
    this.notificationCount = 0;
   });
 }
-
+getbyIndex(index:number){
+  return index;
+}
 }

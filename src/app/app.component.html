@@ -46,9 +46,8 @@
 </nav>
 
 <ng-template #popContent>
-  <ng-container *ngFor="let message of Notifications" ><div class="notification" #notification>{{message.message}}</div>
+  <ng-container *ngFor="let message of Notifications;let i = index;trackby:getbyIndex" ><div class="notification" #notification>{{message.message}}</div>
   </ng-container>
-  <div class="notification" #notification *ngIf="ispushed">{{notificationMessage}}</div>
-</ng-template>
+ </ng-template>
 
 <router-outlet></router-outlet>

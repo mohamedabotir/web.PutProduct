@@ -1,3 +1,4 @@
+import { NotificationData } from './../../Shared/notifications';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class NotificationService {
   getNotificationCount(){
     return this.client.get("http://localhost:20076/api/Notification/GetNotificationsCount");
   }
-  markNotificationAsRead(notifications:any){
+  markNotificationAsRead(notifications:Array<NotificationData>){
 return this.client.post("http://localhost:20076/api/Notification/MarkNotificationAsReaded",notifications);
   }
 }
