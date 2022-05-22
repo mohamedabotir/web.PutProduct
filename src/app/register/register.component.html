@@ -3,22 +3,38 @@
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <div class="form-group">
+          <div class="form-group inputcontainer" >
+            <div *ngIf="form.controls['Email'].pending">
+              <ng-container *ngTemplateOutlet="spinner;" style=" position: absolute;
+              right: 10px;
+              top: calc(20% - 30px);">
+              </ng-container>
+            </div>
+            <div *ngIf="form.controls['Email'].hasError('emailExists')" class="alert alert-danger">
+              Email  already Exists
+              </div>
             <div *ngIf="form.controls['Email'].errors?.['required'] && form.controls['Email'].touched" class="alert alert-danger">
               Email is Required
               </div>
             <label for="exampleInputEmail1" class="form-label">Email address</label>
             <input type="text" class="form-control" id="exampleInputEmail1" formControlName = "Email">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
 
 
-          <div class="form-group">
+          <div class="form-group inputcontainer">
+            <div *ngIf="form.controls['Username'].pending">
+
+              <ng-container *ngTemplateOutlet="spinner">
+              </ng-container>
+            </div>
             <div *ngIf="form.controls['Username'].errors?.['required'] && form.controls['Username'].touched" class="alert alert-danger">
               Username is Required
               </div>
+            <div *ngIf="form.controls['Username'].hasError('userNameExists')" class="alert alert-danger">
+              UserName  already Exists
+              </div>
             <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" formControlName = "Username">
+            <input type="text" class="form-control " id="exampleInputEmail1" formControlName = "Username">
            </div>
 
           <div class="form-group">
@@ -47,12 +63,15 @@ contain at least one uppercase
   <input type="password" class="form-control" id="exampleInputPassword1" formControlName="Password">
    </div>
 
-        <div class="formGroup">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>
 </div>
+<ng-template  #spinner>
+  <div class="control icon-container" >
+    <i class="loader"></i>
+ </div>
+</ng-template>
+

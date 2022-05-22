@@ -1,7 +1,8 @@
 import { AuthService } from './../Services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { groupBy } from 'rxjs';
+import { validateEmail, validatePassword } from './UserName.validator';
 
 @Component({
   selector: 'app-register',
@@ -9,17 +10,29 @@ import { groupBy } from 'rxjs';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  spinner!:TemplateRef<any>|null
 form = this.fb.group({
-'Username':['',[Validators.required]],
+'Username':['',{validators:[Validators.required],
+  asyncValidators:[validatePassword()],
+  updateOn: 'blur'
+
+}],
 'Phone':['',[Validators.required]],
-'Email':['',[Validators.required,Validators.email]],
-'Password':['',[Validators.required,Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$")]]
-
-
+'Email':['',{validators:[Validators.required,Validators.email],
+asyncValidators:[validateEmail()],
+updateOn:'blur'
+}],
+'Password':['',[Validators.required,
+  Validators.
+  pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$")],
+]
 });
   constructor(private fb:FormBuilder,private auth:AuthService) { }
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe(data=>{
+      console.log(this.form.controls['Username'])
+    })
   }
 onSubmit(){
   this.auth.Register(this.form.value).subscribe(data=>{
