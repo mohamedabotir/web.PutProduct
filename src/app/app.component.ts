@@ -22,6 +22,7 @@ notificationCount!:any;
 
 
   ngOnInit(): void {
+    if(this.auth.Token()){
     this.notificationService.getNotificationCount().subscribe(data=>{
       this.notificationCount = data;
       console.log(this.notificationCount,"asdd")
@@ -53,6 +54,7 @@ notificationCount!:any;
 
       }
     });
+  }
   }
   title = 'web.PutProduct';
 markRead(){

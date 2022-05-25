@@ -2,14 +2,14 @@
 
   </ng-content>
   <div class="recent-comments" *ngFor="let comments of CommentDatas">
-    <span class="option">
+    <span class="option" *ngIf="comments.name == userData.name">
       <a  (click)=onEdit(comments) data-bs-target="#exampleModal" data-bs-toggle="modal">Edit</a>
 
       <a (click)=ondelete(comments)>delete</a>
     </span>
    <h4>{{comments.name}}</h4>
    <span class="date-seller">
-     <p>at {{comments.commentDateTime}}</p>
+     <p>at {{comments.commentDateTime |date:'short'}}</p>
    </span>
    <h6 class="content">{{comments.message}}</h6>
    <hr>

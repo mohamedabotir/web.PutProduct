@@ -1,3 +1,5 @@
+import { Profile } from './../../Shared/Profile';
+import { AuthService } from './../Services/auth.service';
 import { ProductService } from './../Services/product.service';
 import { Product } from './../../Shared/Products';
 import { Component, Input, OnInit, AfterContentInit } from '@angular/core';
@@ -14,12 +16,20 @@ comment!:Comments;
 CommentDatas!:Comments[];
 commentOperation!:Comments;
 message!:string;
-  constructor(private Product:ProductService) { }
+userData!:any
+  constructor(private Product:ProductService,private userService:AuthService) { }
   ngAfterContentInit(): void {
 
   }
 
   ngOnInit(): void {
+
+     this.userService.getUserId().subscribe(data=>{
+      this.userService.getProfile(data as string).subscribe(profile=>{
+        this.userData = {name:profile.name};
+        console.log(this.userData);
+      })
+    });
     this.Product.getComments(this.ProductId).subscribe(data=>{
       this.CommentDatas = data;
       console.log(this.CommentDatas);
