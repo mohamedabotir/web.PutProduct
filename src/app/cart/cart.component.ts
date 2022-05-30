@@ -1,24 +1,35 @@
 import { ToastrService } from 'ngx-toastr';
 import {render } from 'creditcardpayments/creditCardPayments'
 import { CartService } from './../Services/cart-service.service';
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Product } from 'src/Shared/Products';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { FormControl, Validators } from '@angular/forms';
+import { validateCode } from './promo.validation';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit,OnChanges {
+export class CartComponent implements OnInit,OnChanges,AfterViewInit {
   @Input() qty!:Number;
   @ViewChild('payment') span!:ElementRef;
   @ViewChild('payment1') span2!:ElementRef;
-  TotalPrice!:number;
+  spinner!:TemplateRef<any>|null
+   paypalClicked=false;
+  TotalPrice=-1;
+  code=new FormControl(null,{
+    asyncValidators:[validateCode(this.TotalPrice)],
+    updateOn:'blur'
+    })
   price:BehaviorSubject<number>=new BehaviorSubject<number>(0);
   constructor(private cartService:CartService,private toast:ToastrService) {
 
 
+  }
+  ngAfterViewInit(): void {
+     this.code.setAsyncValidators(validateCode(this.TotalPrice));
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.products,changes+"saddsadsadsadasd");
@@ -29,7 +40,6 @@ export class CartComponent implements OnInit,OnChanges {
    this.products = this.cartService.returnProducts();
      console.log(this.products);
     this.CalculateTotalPrice();
-    this.getRender();
   }
   deleteItem(item:Product){
     this.cartService.Delete(item);
@@ -44,7 +54,7 @@ export class CartComponent implements OnInit,OnChanges {
   }
 
   pay(){
-  this.cartService.Pay(this.products,"fdsfsdfsd").subscribe(data=>{
+  this.cartService.Pay(this.products,this.code.value).subscribe(data=>{
     if(data){
       this.products=[];
     this.toast.success("Order processed successfully delivery will contact you with in 24hour")
@@ -84,9 +94,11 @@ CalculateTotalPrice(){
 }
 
 getRender(){
+  this.paypalClicked = true;
+  if(this.TotalPrice>=1)
     render({
       id: '#mypaypalButtons',
-      value: this.TotalPrice.toString(),
+      value: this.getTotalPrice(),
       currency: 'US',
       onApprove:(state=>{
        this.pay();
@@ -94,6 +106,20 @@ getRender(){
       })
     });
 
+}
+checkCode(){
+  if(this.code.hasError('value'))
+  console.log(this.code.getError('value').toString());
+  this.price.next(this.code.getError('value'));
+  console.log(this.price.value.toString())
+ }
+getTotalPrice():string{
+   if(this.code.hasError('value')&&this.TotalPrice!=-1){
+    console.log(this.code.getError('value').toString());
+   return this.code.getError('value').toString();
+  }
+  else
+  return this.TotalPrice.toString();
 }
 }
 

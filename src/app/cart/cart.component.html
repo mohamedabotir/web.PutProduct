@@ -22,8 +22,30 @@
               <div class="d-flex align-items-center" (click)="deleteItem(items)"><i class="fa fa-trash mb-1 text-danger"></i></div>
           </div>
 
-          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><input type="text" class="form-control border-0 gift-card" placeholder="discount code/gift card"><button class="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button></div>
-          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded" #payment1><div id="mypaypalButtons" #payment></div></div>
+          <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded inputcontainer">
+            <div *ngIf="code.pending && code.touched && code.dirty">
+              <ng-container *ngTemplateOutlet="spinner;" style=" position: absolute;
+              right: 10px;
+              top: calc(40% - 30px);">
+              </ng-container>
+            </div>
+            <div *ngIf="code.hasError('codeNotExists')">
+              <p style="color:brown;">*Wrong Code!</p>
+            </div>
+            <input type="text" [formControl]="code" class="form-control border-0 gift-card" placeholder="discount code/gift card">
+            <button class="btn btn-outline-warning btn-sm ml-2" type="button" (click)="checkCode()">Apply</button>
+          </div>
+              <div *ngIf="!paypalClicked">
+
+                <button class="btn btn-success"  (click)="getRender()">Pay With Paypal</button>
+              </div>
+
+            <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded" #payment1><div id="mypaypalButtons" #payment></div></div>
       </div>
   </div>
 </div>
+<ng-template  #spinner>
+  <div class="control icon-container" >
+    <i class="loader"></i>
+ </div>
+</ng-template>
