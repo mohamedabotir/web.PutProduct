@@ -17,10 +17,9 @@ export class CartComponent implements OnInit,OnChanges,AfterViewInit {
   @ViewChild('payment') span!:ElementRef;
   @ViewChild('payment1') span2!:ElementRef;
   spinner!:TemplateRef<any>|null
-   paypalClicked=false;
+   paypalClicked=0;
   TotalPrice=-1;
   code=new FormControl(null,{
-    asyncValidators:[validateCode(this.TotalPrice)],
     updateOn:'blur'
     })
   price:BehaviorSubject<number>=new BehaviorSubject<number>(0);
@@ -94,7 +93,8 @@ CalculateTotalPrice(){
 }
 
 getRender(){
-  this.paypalClicked = true;
+  this.paypalClicked++;
+ console.log(this.span2);
   if(this.TotalPrice>=1)
     render({
       id: '#mypaypalButtons',
@@ -107,6 +107,7 @@ getRender(){
     });
 
 }
+
 checkCode(){
   if(this.code.hasError('value'))
   console.log(this.code.getError('value').toString());
