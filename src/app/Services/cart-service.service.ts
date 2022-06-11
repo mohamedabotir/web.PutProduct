@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from 'src/Shared/Products';
 import {Order} from 'src/Shared/Order';
 import { environment } from 'src/environments/environment';
-let Cart:BehaviorSubject<Product>=new BehaviorSubject<Product>({id:0,description:'',name:'',price:0,categoryId:0,imageUrl:'',userId:'',userName:'',qty:0,quantity:0});
+let Cart:BehaviorSubject<Product>=new BehaviorSubject<Product>({id:0,description:'',name:'',price:0,categoryId:0,imageUrl:'',userId:'',userName:'',qty:0,quantity:0,product:null});
 
 @Injectable()
 export class  CartService {
@@ -13,7 +13,7 @@ export class  CartService {
   Orders: Order;
   apiurl = environment.url
   constructor(private toast:ToastrService,private http:HttpClient) {
-    this.Orders={orderProducts:[],totalPrice:0,discountCode:"",orderTime:new Date()};
+    this.Orders={orderProducts:[],totalPrice:0,discountCode:"",orderTime:new Date(),id:0,userId:""};
   }
 cart:Observable<Product[]>=new Observable<Product[]>();
 returnProducts(){

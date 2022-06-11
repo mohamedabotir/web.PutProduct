@@ -1,7 +1,10 @@
-<p>{{data.product.name}}</p>
-<span>Price {{data.product.price}}</span>
-<p>Quantity:{{data.qty}}</p>
-<span><strong>SubTotal</strong> {{data.product.price * data.qty}}</span>
-<hr>
+
+    <td scope="row">
+      {{data.product.name.substring(0,60)}}
+    </td>
+
+
+
 <ng-content >
 </ng-content>
+

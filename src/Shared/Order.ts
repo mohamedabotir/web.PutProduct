@@ -3,5 +3,7 @@ export interface Order{
 orderProducts:Product[],
 totalPrice:Number,
 discountCode?:string,
-orderTime:Date
+orderTime:Date,
+id:Number,
+userId:string
 }

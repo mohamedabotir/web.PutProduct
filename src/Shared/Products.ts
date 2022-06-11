@@ -1,9 +1,10 @@
 export interface Product{
+  product?:any,
   id:Number,
   description:String,
   quantity:Number,
   name:String,
-  price:Number,
+  price:number,
   categoryId: Number,
   imageUrl:String,
   userId:String,
