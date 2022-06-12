@@ -11,7 +11,8 @@ import { ProductService } from '../Services/product.service';
 export class OrdersHistoryComponent implements OnInit {
 
 orders!:Array<Order>
-totalPaid!:number
+totalPaid=0;
+Income=0;
 userId:any;
 
   constructor(private products:ProductService,private userService:AuthService) { }
@@ -24,6 +25,9 @@ userId:any;
     this.products.getOrderHistory().subscribe(data=>{
       this.orders = data;
       this.orders.forEach(data=>{
+        if(data.userId != this.userId)
+        this.Income+=Number(data.totalPrice);
+        else
         this.totalPaid +=Number(data.totalPrice)
       });
       console.log(this.orders);
