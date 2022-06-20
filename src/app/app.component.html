@@ -9,9 +9,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
         <li class="nav-item cart">
           <a href="/checkout"><i class="fa-solid fa-cart-shopping"></i>
           <span class="cart-length" id="cart"></span>
@@ -46,7 +43,9 @@
 </nav>
 
 <ng-template #popContent>
-  <ng-container *ngFor="let message of Notifications;let i = index;trackby:getbyIndex" ><div class="notification" #notification>{{message.message}}</div>
+  <ng-container *ngFor="let message of Notifications;let i = index;trackby:getbyIndex" ><div class="notification" #notification>{{message.message}}
+    <hr>
+  </div>
   </ng-container>
  </ng-template>
 
