@@ -44,7 +44,7 @@ this.Product.deleteProduct(id).subscribe(data=>{
     return Product.id;
   }
   addToCart(product:Product){
-
+    this.cartService.orderCount++;
     ListProductsComponent.data.push(product);
    this.cartService.AddToCart(product);
   }

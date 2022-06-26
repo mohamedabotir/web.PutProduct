@@ -8,3 +8,6 @@
 .product > img {
   height: 100px;
 }
+.card.w-50.product {
+  margin-top: 1em;
+}

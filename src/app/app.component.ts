@@ -3,6 +3,7 @@ import { NotificationService } from './Services/notification.service';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { AuthService } from './Services/auth.service';
+import { CartService } from './Services/cart-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,7 +16,7 @@ Notifications!:any;
 ispushed = false;
 notificationCount!:any;
 
-  constructor(private auth:AuthService,private notificationService:NotificationService) {
+  constructor(private auth:AuthService,private notificationService:NotificationService,public cart:CartService) {
 
 
   }

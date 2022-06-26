@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg nav">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">PutProduct</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item cart">
           <a href="/checkout"><i class="fa-solid fa-cart-shopping"></i>
-          <span class="cart-length" id="cart"></span>
+          <span class="cart-length" id="cart">{{cart.orderCount}}</span>
           </a>
         </li>
         <li class="nav-item notification "(click)="markRead()">
@@ -48,5 +48,7 @@
   </div>
   </ng-container>
  </ng-template>
+<div class="body-outlet">
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>

@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { NotificationService } from './Services/notification.service';
 import { ErrorInterceptorService } from './Services/error-interceptor.service';
 import { ProductService } from './Services/product.service';
@@ -30,11 +31,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
    declarations: [
-    AppComponent,
     LoginComponent,
     RegisterComponent,
     ProductComponent,
-    ListProductsComponent,
     ProductEditComponent,
     ProfileComponent,
     CartComponent,
@@ -59,7 +58,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule
 
   ],
-  providers: [CartService,AuthService,ProductService,NotificationService,{
+  providers: [CartService,AuthService,ProductService,NotificationService,CoreModule,{
     provide:HTTP_INTERCEPTORS,
     useClass:InterceptorService,
     multi:true

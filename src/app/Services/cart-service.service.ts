@@ -7,11 +7,14 @@ import {Order} from 'src/Shared/Order';
 import { environment } from 'src/environments/environment';
 let Cart:BehaviorSubject<Product>=new BehaviorSubject<Product>({id:0,description:'',name:'',price:0,categoryId:0,imageUrl:'',userId:'',userName:'',qty:0,quantity:0,product:null});
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class  CartService {
   data:Product[]=[];
   Orders: Order;
   apiurl = environment.url
+  orderCount=0;
   constructor(private toast:ToastrService,private http:HttpClient) {
     this.Orders={orderProducts:[],totalPrice:0,discountCode:"",orderTime:new Date(),id:0,userId:""};
   }
@@ -55,6 +58,7 @@ localStorage.setItem("products",JSON.stringify(this.data));
       if(!isFound){
         product.qty=1;
         this.data.push(product);
+        Cart.next(product);
         localStorage.setItem("products",JSON.stringify(this.data));
       }
     }else{
@@ -62,7 +66,7 @@ localStorage.setItem("products",JSON.stringify(this.data));
       this.data.push(product);
       localStorage.setItem("products",JSON.stringify(this.data));
     }
-
+    this.getLength();
   }
   Pay(products:Product[],discountCode:string):Observable<Order>{
     let TotalPrice = 0;
@@ -75,5 +79,10 @@ localStorage.setItem("products",JSON.stringify(this.data));
   this.Orders.totalPrice=TotalPrice;
   console.log(JSON.stringify(this.Orders));
   return this.http.post<Order>(this.apiurl+"product/cart",this.Orders);
+  }
+  getLength(){
+    this.cart.subscribe(data=>{
+    this.orderCount = data.length;
+    });
   }
 }
