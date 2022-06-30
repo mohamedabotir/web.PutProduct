@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     ToastrModule.forRoot(),
     RouterModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    SlickCarouselModule
   ],
   exports:[ListProductsComponent,AppComponent],
   providers:[CartService]

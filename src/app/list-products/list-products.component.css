@@ -4,10 +4,16 @@
 .product {
   height: 400px;
   margin-bottom: 5em;
+  width: 20em;
 }
 .product > img {
   height: 100px;
 }
 .card.w-50.product {
   margin-top: 1em;
+}
+
+.moreInfo{
+  margin-top: 1em;
+  color: #dc3545;
 }

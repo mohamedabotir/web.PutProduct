@@ -28,6 +28,7 @@ import { OrdersHistoryComponent } from './orders-history/orders-history.componen
 import { OrderProductComponent } from './order-product/order-product.component';
 import { CommentComponent } from './comment/comment.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
    declarations: [
@@ -44,8 +45,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommentComponent,
 
 
+
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -55,10 +58,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ToastrModule.forRoot(),
     RouterModule,
     FormsModule,
-    NgbModule
+    NgbModule,
 
   ],
-  providers: [CartService,AuthService,ProductService,NotificationService,CoreModule,{
+  providers: [CartService,AuthService,ProductService,NotificationService,{
     provide:HTTP_INTERCEPTORS,
     useClass:InterceptorService,
     multi:true

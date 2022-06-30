@@ -4,4 +4,24 @@
 .body-outlet{
   background-color: #000000;
 }
+.Category{
+
+  font-size: 1.5em;
+  left: 1.5em;
+}
+.Category #Electronic{
+  background-color: green;
+}
+
+.Category #Books{
+  background-color: darkgoldenrod;
+}
+.Category #Computer{
+  background-color:gold;
+}
+
+.Category #Gpu{
+  background-color: khaki;
+}
+
 

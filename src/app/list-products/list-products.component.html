@@ -1,3 +1,18 @@
+<div class="slide-show">
+
+  <ngx-slick-carousel class="carousel"
+  #slickModal="slick-carousel"
+[config]="slideConfig"
+(init)="slickInit($event)"
+(breakpoint)="breakpoint($event)"
+(afterChange)="afterChange($event)"
+(beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide">
+  <img src="{{ slide.img }}" alt="" width="100%">
+</div>
+</ngx-slick-carousel>
+
+</div>
 <div class="container-fluid profuct-page">
   <div class="row">
     <div class="col-md-4" *ngFor="let product of Products;trackBy:track;let i =index">
@@ -6,11 +21,11 @@
         <div class="card-body">
           <h5 class="card-title">{{product.name.substring(0,13)}}</h5>
           <p class="card-text product-description">{{product.description.substring(0,28)}}</p>
-          <a href="/getProduct/{{product.id}}">MoreInfo</a>
+          <a href="/getProduct/{{product.id}}" class="moreInfo">MoreInfo</a>
           <div>
 <div class="cart-add">
   <a class="btn btn-primary" (click)="addToCart(product)">Add To Cart </a>
-  <p class="price">{{product.price}} L.E</p>
+  <p class="price"><i class="fa-solid fa-money-bills" style="color: #0ba316;"></i> {{product.price}} L.E</p>
 </div>
 
 

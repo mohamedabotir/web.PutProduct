@@ -87,9 +87,6 @@ CalculateTotalPrice(){
  });
  console.log(this.TotalPrice);
  console.log(this.span);
-
-
-
 }
 
 getRender(){

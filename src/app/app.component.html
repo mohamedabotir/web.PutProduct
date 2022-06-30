@@ -19,6 +19,20 @@
           <span class="notification-length">{{notificationCount}}</span>
 
         </li>
+        <li class="nav-item dropdown d-flex Category" >
+
+          <a class="nav-link dropdown-toggle me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a  class="dropdown-item" href="/profile/userId" id="Electronic" ><li>Electronic</li></a>
+          <a  class="dropdown-item" href="/profile/userId" id="Books"><li>Books</li></a>
+          <a class="dropdown-item" href="/register" id="Computer"><li id="register1">Computer</li></a>
+          <a class="dropdown-item" href="/postProduct" id="Gpu"><li id="postProduct">Gpu</li></a>
+          <a class="dropdown-item" href="/logout" id="Other"><li id="Logout">Other</li></a>
+
+        </ul>
+        </li>
       </ul>
       <ul>
         <li class="nav-item dropdown d-flex">
@@ -38,6 +52,7 @@
 
       </ul>
 
+
     </div>
   </div>
 </nav>
@@ -49,6 +64,6 @@
   </ng-container>
  </ng-template>
 <div class="body-outlet">
-
   <router-outlet></router-outlet>
+
 </div>

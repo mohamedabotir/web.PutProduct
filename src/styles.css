@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+  font-weight: bold;
+}
+a#navbarDropdown {
+  color: black;
+}
+a.nav-link.active {
+  color: black;
+}
+
 .cart {
   top: 0.5em;
   position: relative;
@@ -20,6 +30,13 @@
   text-decoration: none;
 }
 
+:link{
+  color: black;
+  text-decoration: none;
+}
+a {
+  color: black;
+}
 li.nav-item.notification {
   position: absolute;
   left: 16em;
@@ -44,3 +61,6 @@ li.nav-item.notification {
 
 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
