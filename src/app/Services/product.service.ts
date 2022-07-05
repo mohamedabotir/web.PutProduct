@@ -50,4 +50,7 @@ return this.push.put<string>(this.apiPath+"Product/UpdateComment",comment);
 deleteComment(id:Number){
   return this.push.delete<string>(this.apiPath+"Product/DeleteComment?id="+id);
   }
+  getMostProduct(){
+    return this.push.get<Product[]>(this.apiPath+"Product/MostPopularProduct");
+  }
 }

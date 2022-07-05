@@ -25,7 +25,9 @@ a.nav-link.active {
   height: 30px;
   font-size: 1rem;
 }
-
+.product img{
+  height: 10em;
+}
 .cart a {
   text-decoration: none;
 }
@@ -60,6 +62,9 @@ li.nav-item.notification {
     font-size: 1rem;
 
 
+}
+.slick-next {
+  right: 2em;
 }
 
 html, body { height: 100%; }

@@ -29,6 +29,7 @@ import { OrderProductComponent } from './order-product/order-product.component';
 import { CommentComponent } from './comment/comment.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
    declarations: [
@@ -43,6 +44,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     OrdersHistoryComponent,
     OrderProductComponent,
     CommentComponent,
+    LandingComponent,
 
 
 
@@ -59,6 +61,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     RouterModule,
     FormsModule,
     NgbModule,
+    SlickCarouselModule
 
   ],
   providers: [CartService,AuthService,ProductService,NotificationService,{

@@ -1,0 +1,16 @@
+
+h2.text-center {
+
+    font-weight: bold;
+    color: black;
+
+    width: 10em;
+
+    position: relative;
+    left: 2em;
+    margin: 1em 0em 1em 0em;
+}
+
+.Popular-Product{
+  margin-left: 1em;
+}

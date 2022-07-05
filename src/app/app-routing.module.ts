@@ -1,3 +1,4 @@
+import { LandingComponent } from './landing/landing.component';
 import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CartComponent } from './cart/cart.component';
@@ -16,13 +17,15 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'postProduct',component:ProductComponent,canActivate:[AuthGuardService]},
-  {path:'',component:ListProductsComponent},
+  {path:'',component:LandingComponent},
+  {path:'products',component:ListProductsComponent},
   {path:'profile/:id',component:ProfileComponent},
   {path:'product/:id',component:ProductEditComponent,canActivate:[AuthGuardService]},
   {path:'getProduct/:id',component:DisplayProductComponent},
   {path:'checkout',component:CartComponent},
   {path:'logout',component:LogoutComponent},
-  {path:'OrderHistory',component:OrdersHistoryComponent,canActivate:[AuthGuardService]}
+  {path:'OrderHistory',component:OrdersHistoryComponent,canActivate:[AuthGuardService]},
+  {path:'listProduct',component:ListProductsComponent,canActivate:[AuthGuardService]}
 ];
 
 @NgModule({

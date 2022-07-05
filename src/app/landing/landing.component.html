@@ -1,0 +1,32 @@
+<div class="slide-show">
+
+  <ngx-slick-carousel class="carousel"
+  #slickModal="slick-carousel"
+[config]="slideConfig"
+(init)="slickInit($event)"
+(breakpoint)="breakpoint($event)"
+(afterChange)="afterChange($event)"
+(beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide">
+  <img src="{{ slide.img }}" alt="" width="100%">
+</div>
+</ngx-slick-carousel>
+
+</div>
+
+
+  <h2 class="text-center">Most Popular</h2>
+
+  <div class="row Popular-Product">
+    <div class="col-md-3" *ngFor="let product of products ">
+      <a [href]="'getProduct/'+product.id">
+        <div class="card w-50 product">
+          <img [src]="product.imageUrl" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{product.name.substring(0,13)}}</h5>
+            <p class="card-text product-description">{{product.description.substring(0,28)}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>

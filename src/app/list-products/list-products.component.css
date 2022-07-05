@@ -17,3 +17,36 @@
   margin-top: 1em;
   color: #dc3545;
 }
+.filter-bar{
+    margin-top: 1em;
+    border-left: aliceblue solid 2px;
+}
+
+.filter .price-filter input{
+  width: 6em;
+    font-size: 1em;
+
+    border-radius: 1em;
+    width: 30%;
+
+}
+.splitter{
+  margin-top: 2em;
+  border-bottom: #dc3545 solid 1px;
+  width: 70%;
+}
+.category{
+  margin-top: 1em;
+}
+.category p {
+  background-color: aliceblue;
+  border-radius: 10em;
+  width: 8em;
+  text-align: center;
+}
+
+.category p:hover {
+  background-color: gainsboro;
+  text-align: center;
+  cursor: pointer;
+}

@@ -13,6 +13,7 @@ import * as signalR from '@microsoft/signalr';
   styleUrls: ['./list-products.component.css']
 })
 export class ListProductsComponent implements OnInit {
+  selectedCategory!:Array<string>;
 public static data:Product[]=[];
  Products?:Array<Product>;
  Temp?:Product;
@@ -20,7 +21,7 @@ public static data:Product[]=[];
   constructor(private cartService:CartService,private Product:ProductService,private auth:AuthService,private tos:ToastrService) { }
 
   ngOnInit(): void {
-
+    this.selectedCategory = [];
     this.auth.getUserId().subscribe(data=>{
     this.userId = data;
     });
@@ -73,6 +74,21 @@ this.Product.deleteProduct(id).subscribe(data=>{
 
   beforeChange(e:any) {
     console.log('beforeChange');
+  }
+  select(sel:string){
+    if(this.selectedCategory.includes(sel)){
+      let index= this.selectedCategory.indexOf(sel);
+      console.log(index);
+      this.selectedCategory.splice(index,1);
+    }else{
+
+        this.selectedCategory.push(sel);
+    }
+    console.log(this.selectedCategory)
+
+  }
+  isSelected(sel:string){
+   return this.selectedCategory.indexOf(sel)!=-1?"gray":"white";
   }
 
 }
