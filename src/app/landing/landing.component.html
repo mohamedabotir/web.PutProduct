@@ -21,15 +21,52 @@
 </div>
 
   <div class="row Popular-Product">
-    <div class="col-md-3" *ngFor="let product of products ">
-      <a [href]="'getProduct/'+product.id">
-        <div class="card w-50 product">
-          <img [src]="product.imageUrl" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{product.name.substring(0,13)}}</h5>
-            <p class="card-text product-description">{{product.description.substring(0,28)}}</p>
+    <div class="col-md-3 card-container" *ngFor="let product of products ">
+
+        <div class="card card-flip">
+          <div class="front card-block">
+            <!-- To add FontAwesome Icons use Unicode characters and to set size use font-size instead of fa-*x because when calculating the height (see js), the size of the icon is not calculated if using classes -->
+
+            <img class="card-img-top fa img-card" [src]="product.imageUrl" class="card-img-top" alt="...">
+            <h4 class="card-title">{{product.name.substring(0,13)}}</h4>
+            <h6 class="card-subtitle text-muted">{{product.description.substring(0,28)}}</h6>
+          </div>
+          <div class="back card-block">
+            <p class="back-content">
+              {{product.description}}
+            </p>
+            <a [href]="'getProduct/'+product.id" class="btn btn-outline-primary">More Details</a>
           </div>
         </div>
-      </a>
+
     </div>
   </div>
+
+  <!-- Visit https://codepen.io/nicolaskadis/full/brQEOd/ for the latest, no js version! -->
+
+
+<script>
+
+$(document).ready(function() {
+  var front = document.getElementsByClassName("front");
+  var back = document.getElementsByClassName("back");
+
+  var highest = 0;
+  var absoluteSide = "";
+
+  for (var i = 0; i < front.length; i++) {
+    if (front[i].offsetHeight > back[i].offsetHeight) {
+      if (front[i].offsetHeight > highest) {
+        highest = front[i].offsetHeight;
+        absoluteSide = ".front";
+      }
+    } else if (back[i].offsetHeight > highest) {
+      highest = back[i].offsetHeight;
+      absoluteSide = ".back";
+    }
+  }
+  $(".front").css("height", highest);
+  $(".back").css("height", highest);
+  $(absoluteSide).css("position", "relative");
+});
+</script>
