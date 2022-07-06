@@ -14,3 +14,9 @@ h2.text-center {
 .Popular-Product{
   margin-left: 1em;
 }
+span.describtion-popular-tag {
+  margin: -2em 0px 1em 7em;
+  position: absolute;
+  font-size: small;
+  font-weight:500;
+}
