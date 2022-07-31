@@ -23,3 +23,7 @@
 
   margin-left: 1em;
 }
+
+textarea::placeholder {
+  color: #0bf;
+}

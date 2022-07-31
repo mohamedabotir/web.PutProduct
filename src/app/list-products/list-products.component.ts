@@ -13,7 +13,7 @@ import * as signalR from '@microsoft/signalr';
   styleUrls: ['./list-products.component.css']
 })
 export class ListProductsComponent implements OnInit {
-  selectedCategory!:Array<string>;
+  selectedCategory!:Array<Product>;
 public static data:Product[]=[];
  Products?:Array<Product>;
  Temp?:Product;
@@ -32,6 +32,7 @@ this.getProducts();
   getProducts():void{
     this.Product.getProducts().subscribe(data=>{
       this.Products = data;
+      this.selectedCategory = data;
       console.log(data);
     });
   }
@@ -75,20 +76,26 @@ this.Product.deleteProduct(id).subscribe(data=>{
   beforeChange(e:any) {
     console.log('beforeChange');
   }
-  select(sel:string){
-    if(this.selectedCategory.includes(sel)){
-      let index= this.selectedCategory.indexOf(sel);
-      console.log(index);
-      this.selectedCategory.splice(index,1);
-    }else{
+  select(sel:number){
+    this.Products = this.selectedCategory;
+    if(sel!=5)
+   this.Products = this.Products?.filter((e): Product | undefined => {
+     if (e.categoryId == sel)
+       return e;
 
-        this.selectedCategory.push(sel);
-    }
-    console.log(this.selectedCategory)
+       return undefined;
+   })
+   console.log(this.Products);
 
   }
-  isSelected(sel:string){
-   return this.selectedCategory.indexOf(sel)!=-1?"gray":"white";
+  priceFilter(min:any,max:any){
+    this.Products = this.Products?.filter((e): Product | undefined => {
+      if (e.price <=max && e.price>=min)
+        return e;
+
+        return undefined;
+    })
   }
+
 
 }

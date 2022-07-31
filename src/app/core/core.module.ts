@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import{MatButtonModule} from '@angular/material/button'
 
 
 
@@ -29,7 +30,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     RouterModule,
     FormsModule,
     NgbModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatButtonModule
   ],
   exports:[ListProductsComponent,AppComponent],
   providers:[CartService]

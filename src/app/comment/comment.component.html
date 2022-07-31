@@ -15,8 +15,11 @@
    <hr>
   </div>
 
-  <input placeholder="Comment" class="comment form-control" #CommentRef minlength="1" maxlength="150">
-  <button (click)="onSubmit(CommentRef.value)" class="btn btn-success comment-btn">Comment</button>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput  value="nice" minlength="10" placeholder="Ex. It makes me feel..." #CommentRef></textarea>
+  </mat-form-field>
+   <button (click)="onSubmit(CommentRef.value)" class="btn btn-success comment-btn">Comment</button>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

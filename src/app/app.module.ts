@@ -30,7 +30,7 @@ import { CommentComponent } from './comment/comment.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LandingComponent } from './landing/landing.component';
-
+import {MatInputModule} from '@angular/material/input'
 @NgModule({
    declarations: [
     LoginComponent,
@@ -61,7 +61,8 @@ import { LandingComponent } from './landing/landing.component';
     RouterModule,
     FormsModule,
     NgbModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatInputModule
 
   ],
   providers: [CartService,AuthService,ProductService,NotificationService,{

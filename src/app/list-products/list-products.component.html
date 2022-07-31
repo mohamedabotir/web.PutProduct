@@ -29,16 +29,19 @@
 <div class="col-md-3 filter-bar">
 <div class="filter">
   <div class="price-filter">
-    <input type="number" placeholder="max price" min="1">
-    <input type="number" placeholder="min price" min="1">
+    <input type="number" value="1" placeholder="min price" min="1" #min>
+    <input type="number" value="2" placeholder="max price" min="1" #max>
+    <button (click)="priceFilter(min.value,max.value)" style="display: block;margin-top:1em" mat-raised-button>Apply</button>
+
     <div class="splitter"></div>
   </div>
   <div class="category">
-    <p (click)="select('Electronic')" [style]="'backgound-color:'+isSelected('Electronic')">Electronic</p>
-    <p (click)="select('Book')">Book</p>
-    <p (click)="select('Computer')">Computer</p>
-    <p (click)="select('GraphicCard')">GraphicCard</p>
-    <p (click)="select('Other')">Other</p>
+    <p (click)="select(0)">Electronic</p>
+    <p (click)="select(1)">Book</p>
+    <p (click)="select(2)">Computer</p>
+    <p (click)="select(3)">GraphicCard</p>
+    <p (click)="select(4)">Other</p>
+    <p (click)="select(5)">All</p>
   </div>
 </div>
 </div>
