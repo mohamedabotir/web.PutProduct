@@ -45,11 +45,14 @@
        document.getElementById("login").remove();
        document.getElementById("register").remove();
        document.getElementById("profile").href=`/profile/${userId}`;
+
       },
       error:function(error){
         document.getElementById("profile").remove();
         document.getElementById("postProduct").remove();
         document.getElementById("Logout").remove();
+       document.getElementById("OrderHistory").remove();
+
       }
 
     })

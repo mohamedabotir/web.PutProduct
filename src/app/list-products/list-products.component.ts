@@ -89,6 +89,9 @@ this.Product.deleteProduct(id).subscribe(data=>{
 
   }
   priceFilter(min:any,max:any){
+    if(this.Products?.length===0){
+      this.Products = this.selectedCategory;
+    }
     this.Products = this.Products?.filter((e): Product | undefined => {
       if (e.price <=max && e.price>=min)
         return e;

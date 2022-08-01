@@ -110,3 +110,6 @@ color: black;
 }
 
 
+.slide-img{
+  height: calc(100vh - 25em);
+}
