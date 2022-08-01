@@ -53,4 +53,7 @@ deleteComment(id:Number){
   getMostProduct(){
     return this.push.get<Product[]>(this.apiPath+"Product/MostPopularProduct");
   }
+  createPromoCode(model:any){
+  return this.push.post(this.apiPath+"Product/CreatePromoCode",model);
+  }
 }

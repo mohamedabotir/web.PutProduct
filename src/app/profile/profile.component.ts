@@ -1,3 +1,5 @@
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ProductService } from './../Services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, mergeMap } from 'rxjs';
 import { AuthService } from './../Services/auth.service';
@@ -23,8 +25,13 @@ location: [''],
 imageUrl: ['']
 
 });
+promo = this.fb.group({
+  Name:[,Validators.required],
+  DiscountValue:[,Validators.required],
+  ExpireTime:[,Validators.required]
+});
 myId!:string
-  constructor(private fb:FormBuilder,private Auth:AuthService,private route:ActivatedRoute) { }
+  constructor(private toast:ToastrService,private fb:FormBuilder,private product:ProductService,private Auth:AuthService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -55,5 +62,14 @@ myId!:string
       console.log(data);
     });
   }
-
+onCreateCode(){
+console.log(this.promo.value)
+this.product.createPromoCode(this.promo.value).subscribe(res=>{
+  if(res == false){
+    this.toast.error("Can't Add PromoCode")
+  }else{
+    this.toast.success('Created Success');
+  }
+})
+}
 }

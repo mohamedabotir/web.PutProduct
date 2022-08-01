@@ -1,3 +1,5 @@
+<button *ngIf="myId==id" data-bs-target="#exampleModal2" data-bs-toggle="modal" style="display: block;margin:1em" mat-raised-button>AddPromoCode</button>
+
 <div class="container rounded bg-white mt-5 mb-5">
   <div class="row">
     <form [formGroup]="form" (ngSubmit)="onUpdate()">
@@ -41,3 +43,31 @@
 </div>
 
 
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" >Add PromoCode</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="promo" (ngSubmit)="onCreateCode()">
+            <div class="form-group">
+              <input placeholder="promo percentage" type="number" class="form-control" formControlName="DiscountValue">
+            </div>
+            <div class="form-group">
+              <input class="form-control" formControlName="ExpireTime" type="date" formControlName="ExpireTime">
+            </div>
+            <div class="form-group">
+              <input class="form-control" placeholder="promo Name"formControlName="Name" type="text">
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+
+          </form>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Close</button>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -31,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { LandingComponent } from './landing/landing.component';
 import {MatInputModule} from '@angular/material/input'
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
    declarations: [
     LoginComponent,
@@ -62,7 +63,8 @@ import {MatInputModule} from '@angular/material/input'
     FormsModule,
     NgbModule,
     SlickCarouselModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
 
   ],
   providers: [CartService,AuthService,ProductService,NotificationService,{
