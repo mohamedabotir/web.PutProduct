@@ -49,7 +49,7 @@
 </nav>
 
 <ng-template #popContent>
-  <ng-container *ngFor="let message of Notifications;let i = index;trackby:getbyIndex" ><div class="notification" #notification>{{message.message}}
+  <ng-container *ngFor="let message of Notifications;let i = index;trackby:getbyIndex" ><div class="notification" #notification><a href="/getProduct/{{message.productId}}">{{message.message}}</a>
     <hr>
   </div>
   </ng-container>
