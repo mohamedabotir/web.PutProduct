@@ -1,6 +1,6 @@
 import { NotificationData } from './../Shared/notifications';
 import { NotificationService } from './Services/notification.service';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, OnChanges, SimpleChanges, HostListener } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { AuthService } from './Services/auth.service';
 import { CartService } from './Services/cart-service.service';
@@ -10,6 +10,11 @@ import { CartService } from './Services/cart-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+@HostListener('window:offline',['$event'])
+isWindowOffline(event:any){
+  alert('offline!')
+  console.log(event);
+}
 userId?:any;
 notificationMessage!:any;
 Notifications!:any;
