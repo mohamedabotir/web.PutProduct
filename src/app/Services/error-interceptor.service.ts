@@ -20,12 +20,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
     catchError((err)=>{
 
 
-    if(err.status === 401)
-    {
-       message = "Please relogin and try again";
-      this.toast.error(message);
-    }
-    else if(err.status === 404)
+     if(err.status === 404)
     {
       message = "NotFound";
      this.toast.error(message);
@@ -35,11 +30,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
       message = "Can't Processed yout request";
      this.toast.error(message);
    }
-    else
-    {
-      message = "Some thing gone wrong";
-     this.toast.error(message);
-   }
+
 
    return throwError(err);
   })
